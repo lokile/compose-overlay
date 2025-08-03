@@ -2,7 +2,7 @@
 
 `ComposeOverlay` is a lightweight Android library that lets you display Compose UI as overlays on top of any running activity — without requiring any changes to the activity's layout.
 
-It’s ideal for in-app toasts, floating messages, or custom dialogs.
+It’s ideal for floating messages or custom dialogs.
 
 ![demo](https://github.com/user-attachments/assets/87f9ad07-e869-40fb-83de-4d0cfdcb0792)
 
@@ -11,15 +11,35 @@ It’s ideal for in-app toasts, floating messages, or custom dialogs.
 ## ✨ Features
 
 - Works with any `ComponentActivity`.
-- Automatically removes itself when no longer displayed in the UI.
-- Can be called from anywhere in your codebase and from any thread
+- Automatically cleans itself up when it’s no longer visible in the UI.
+- Callable from anywhere in your codebase, from any thread
 
 ---
 
 ## 🚀 Getting Started
->You can check out the demo app to see how it works in practice.
+>You can check out the demo app to see how it works.
 
-### 1. Implement `OverlayContent`
+### 1. Installation
+Add the following code to your root build.gradle at the end of repositories:
+```
+  allprojects {
+      repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+      }
+  }
+```
+Then, add the dependency to your app build.gradle file, the latest version is: [![](https://jitpack.io/v/lokile/compose-overlay.svg)](https://jitpack.io/#lokile/compose-overlay)
+```
+  dependencies {
+    implementation("com.github.lokile:compose-overlay:latest_version")
+  }
+```
+
+
+
+
+### 2. Implement `OverlayContent`
 
 ```kotlin
 class HelloDialog(
@@ -48,19 +68,14 @@ class HelloDialog(
 }
 ```
 
-### 2. Show your overlay
+### 3. Show your overlay
 
 ```kotlin
 ComposeOverlay.show(HelloDialog(...))
 ```
 
-### How it works
-- `ComposeOverlay.show()` publishes an internal event containing your `OverlayRenderer`
-- When the activity is resumed,  it adds a `ComposeView` to the activity’s root `ViewGroup` and calls `render()`
-- If `render()` returns false, a `DisposableEffect` removes the `ComposeView` automatically.
-
-
-### License
+---
+## License
 This project is released under the MIT License.
 
 ### Maintainer
