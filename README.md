@@ -20,19 +20,11 @@ It’s ideal for floating messages or custom dialogs.
 >You can check out the demo app to see how it works.
 
 ### 1. Installation
-Add the following code to your root build.gradle at the end of repositories:
-```
-  allprojects {
-      repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-      }
-  }
-```
-Then, add the dependency to your app build.gradle file, the latest version is: [![](https://jitpack.io/v/lokile/compose-overlay.svg)](https://jitpack.io/#lokile/compose-overlay)
+Add the dependency to your app build.gradle file, the latest version is: [![Maven Central](https://img.shields.io/maven-central/v/io.github.lokile/compose-overlay?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.lokile/compose-overlay)
+
 ```
   dependencies {
-    implementation("com.github.lokile:compose-overlay:latest_version")
+    implementation("io.github.lokile:compose-overlay:latest_version")
   }
 ```
 
